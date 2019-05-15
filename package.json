@@ -1,0 +1,33 @@
+{
+  "name": "mousemobil",
+  "version": "1.0.0",
+  "description": "While human transportation systems have soared in progress over the past century, mouse transportation systems have stagnated. We're making a small vehicle (think shoebox-sized) that attracts mice inside and uses a camera to allow a mouse to control the velocity of the vehicle, in the hopes of creating a more inclusive world for our small and furry friends.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jomanw/MouseMobil.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jomanw/MouseMobil/issues"
+  },
+  "homepage": "https://github.com/Jomanw/MouseMobil#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "chalk": "^2.4.2",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.31.0"
+  }
+}
