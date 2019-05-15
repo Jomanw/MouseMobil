@@ -78,7 +78,7 @@ class HubCamera():
         self.y = y + (h / 2)
 
         # If we want to also print out the image with the contours and the crop, for debugging:
-        if False:
+        if True:
             # Output to files, just to see the output
             roi=img[y:y+h,x:x+w]
             cv2.imwrite('Image_crop.jpg', roi)
