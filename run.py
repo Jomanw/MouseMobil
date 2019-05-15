@@ -19,4 +19,4 @@ hub = HubCamera()
 
 if __name__ == "__main__":
     print("Got here")
-    print(hub.get_mouse_location)
+    print(hub.get_mouse_location())

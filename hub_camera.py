@@ -80,11 +80,11 @@ class HubCamera():
         # If we want to also print out the image with the contours and the crop, for debugging:
         if True:
             # Output to files, just to see the output
-            roi=img[y:y+h,x:x+w]
+            roi=image[y:y+h,x:x+w]
             cv2.imwrite('Image_crop.jpg', roi)
 
-            cv2.rectangle(img,(x,y),(x+w,y+h),(200,0,0),2)
-            cv2.imwrite('Image_cont.jpg', img)
+            cv2.rectangle(image,(x,y),(x+w,y+h),(200,0,0),2)
+            cv2.imwrite('Image_cont.jpg', image)
 
         # Need to clear the buffer for the video capture, otherwise it'll throw an error
         rawCapture.truncate(0)
