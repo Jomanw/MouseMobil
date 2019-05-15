@@ -1,3 +1,6 @@
+"""
+Class for controlling the motors inside of our small 3-wheeled vehicle.
+"""
 from adafruit_servokit import ServoKit
 import math
 import numpy as np
@@ -86,6 +89,16 @@ class Vehicle():
         Reads the servo angle of the trapdoor servo
         """
         pass # TODO: Implement this
+
+    def door_open(self):
+        """
+        Returns true if the mouse door is open
+        """
+
+    def door_closed(self):
+        """
+        Returns true if the mouse door is closed
+        """
 
     def open_door(self):
         """

@@ -14,3 +14,10 @@ Getting the no-ip service to run in the background upon reboot: https://somoit.n
 Creating a Node Server with the Raspberry Pi: https://blog.cloudboost.io/how-to-run-a-nodejs-web-server-on-a-raspberry-pi-for-development-3ef9ac0fc02c
 
 our hostname: mousemobil.ddns.net
+
+
+TODO's:
+- Implement commands to start the car from the webserver page
+- Implement commands to stop the car from the webserver page
+- Implement commands to run the car in test mode (using commands from the webserver to control the car)
+- Let the car be run from the

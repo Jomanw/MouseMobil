@@ -9,6 +9,9 @@ app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use(morgan('dev')) // logging
 //Main App Route
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, 'index.html')));
+
+
+
 const port = 80;
 //Run Server
 app.listen(process.env.PORT || port, () => console.log(chalk.blue(`Listening intently on port ${port}`)));

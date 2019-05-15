@@ -15,7 +15,8 @@ import cv2
 camera = PiCamera()
 camera.resolution = (480, 480)
 camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(480, 480))
+camera_width, camera_height = 480, 480
+rawCapture = PiRGBArray(camera, size=(camera_width, camera_height))
 
 # allow the camera to warmup
 time.sleep(0.1)
@@ -28,6 +29,8 @@ class HubCamera():
     def __init__(self):
         self.x = 0
         self.y = 0
+        self.width = camera_width
+        self.height = camera_height
         self.mouse_present = False
         self.door_open = True
         self.camera_stream = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True)
@@ -74,8 +77,9 @@ class HubCamera():
         else:
             self.mouse_present = False
 
-        self.x = x + (w / 2)
-        self.y = y + (h / 2)
+        # Return the coordinates, normalized to be centered around (0, 0) and in the range (-1, 1)
+        self.x = (x + (w / 2) - (self.width / 2)) / (self.width / 2)
+        self.y = (y + (h / 2) - (self.height / 2)) / (self.height / 2)
 
         # If we want to also print out the image with the contours and the crop, for debugging:
         if True:
