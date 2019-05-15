@@ -4,8 +4,10 @@
   "description": "While human transportation systems have soared in progress over the past century, mouse transportation systems have stagnated. We're making a small vehicle (think shoebox-sized) that attracts mice inside and uses a camera to allow a mouse to control the velocity of the vehicle, in the hopes of creating a more inclusive world for our small and furry friends.",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm run webpack",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start:dev": "npm run webpack -- -w & nodemon --ignore src/ --ignore dist/ server.js"
   },
   "repository": {
     "type": "git",
