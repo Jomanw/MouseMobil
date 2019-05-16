@@ -49,9 +49,9 @@ app.post('/runautonomous', function (req, res, next) {
 
 app.post('/runtest', function (req, res, next) {
   pythonProcess.kill('SIGKILL');
-  pythonProcess = spawn('python3', ['run.py', 'test']);
+  // pythonProcess = spawn('python3', ['run.py', 'test']);
   console.log("Function to start the car in controller mode should go here");
-
+  rpcProcess = spawn('python3', ['test_rpc.py']);
   client.connect("tcp://127.0.0.1:4242");
   res.status = 200;
   res.end("Running car in test mode");
