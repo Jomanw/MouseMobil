@@ -52,7 +52,7 @@ app.post('/runtest', function (req, res, next) {
   // pythonProcess = spawn('python3', ['run.py', 'test']);
   console.log("Function to start the car in controller mode should go here");
   rpcProcess = spawn('python3', ['test_rpc.py']);
-  client.connect("tcp://mousemobil.ddns.net:4242");
+  client.connect("tcp://0.0.0.0:1337");
   res.status = 200;
   res.end("Running car in test mode");
 });
