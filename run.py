@@ -40,7 +40,7 @@ if __name__ == "__main__":
                 return "Hello, %s" %(str(x),)
 
         s = zerorpc.Server(HelloRPC())
-        s.bind("tcp://mousemobil.ddns.net:4242")
+        s.bind("tcp://127.0.0.1:4242")
         s.run()
 
 
