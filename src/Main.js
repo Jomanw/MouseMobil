@@ -1,5 +1,17 @@
 import React from 'react';
+import ControlButtons from './ControlButtons.js';
+
+function runCar() {
+  
+};
 
 export default function Main () {
-  return (<h1>Hello World!</h1>)
+  return (
+    <div>
+      <h1>
+      MouseMobil™ Control Center
+      </h1>
+      <ControlButtons />
+    </div>
+  )
 }

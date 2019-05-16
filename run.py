@@ -1,6 +1,7 @@
-from vehicle import Vehicle
-from hub_camera import HubCamera
+# from vehicle import Vehicle
+# from hub_camera import HubCamera
 import sys
+# sys.exit()
 
 # Threshold for movement for the mouse
 movement_threshold = .1
@@ -12,24 +13,38 @@ motion_servos = [0, 1, 2]
 trapdoor_servo = 3
 
 # Car that will be controlled
-car = Vehicle(motion_servos=motion_servos, trapdoor_servo=trapdoor_servo)
+# car = Vehicle(motion_servos=motion_servos, trapdoor_servo=trapdoor_servo)
 
 # Camera module that will be used to determine mouse location
-hub = HubCamera()
+# hub = HubCamera()
 
 if __name__ == "__main__":
 
-    # If a stop signal is sent, this script will stop the car, open the trapdoor, and exit.
+    # If a stop signal is sent, this script will stop the car and exit.
     if len(sys.argv) > 1 and sys.argv[1] == 'stop':
-        car.stop_car()
-        car.open_door()
+        # car.stop_car()
+        print("Stopped car.")
         sys.exit()
 
     # If an open signal is sent, this script will open the door.
     if len(sys.argv) > 1 and sys.argv[1] == 'open':
-        car.open_door()
+        # car.open_door()
         sys.exit()
 
+    if len(sys.argv) > 1 and sys.argv[1] == 'test':
+        # car.open_door()
+        # Test Loop goes here
+        while True:
+            print("Test loop.")
+        sys.exit()
+
+    if len(sys.argv) > 1 and sys.argv[1] == 'autonomous':
+        # car.open_door()
+        while True:
+            print("Autonomous loop.")
+        sys.exit()
+
+    sys.exit()
     while True:
         x, y = hub.get_mouse_location()
         if not hub.mouse_present():
