@@ -37,7 +37,6 @@ if __name__ == "__main__":
 
         class HelloRPC(object):
             def hello(self, x):
-
                 return "Hello, %s" %(str(x),)
 
         s = zerorpc.Server(HelloRPC())

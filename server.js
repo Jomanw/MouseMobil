@@ -60,6 +60,7 @@ app.post('/runtest', function (req, res, next) {
 app.post('/setspeed', function (req, res, next) {
   console.log("Function to set the velocity of the cars");
   client.invoke("hello", req.x, function(error, res, more) {
+    console.log("I'm here.");
     console.log(error);
     console.log(res);
   });
