@@ -18,12 +18,12 @@ class ControlButtons extends Component {
         this.setState({
             testMode: false,
         });
-        request.post('http://localhost/runautonomous', {});
+        request.post('http://mousemobil.ddns.net/runautonomous', {});
     }
 
     stopCar() {
-        request.post('http://localhost/stopcar', {});
-        request.post('http://localhost/opendoor', {});
+        request.post('http://mousemobil.ddns.net/stopcar', {});
+        request.post('http://mousemobil.ddns.net/opendoor', {});
     }
 
     setCarPosition() {
@@ -34,7 +34,7 @@ class ControlButtons extends Component {
         this.setState({
             testMode: true,
         });
-        request.post('http://localhost/runtest', {});
+        request.post('http://mousemobil.ddns.net/runtest', {});
     }
 
     render() {
