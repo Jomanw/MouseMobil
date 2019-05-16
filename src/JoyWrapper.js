@@ -28,14 +28,16 @@ class JoyWrapper extends Component {
     constructor() {
         super();
         this.managerListener = this.managerListener.bind(this);
+        this.stopCar = this.stopCar.bind(this);
+        this.setCarVelocity = this.setCarVelocity.bind(this);
     }
 
     stopCar() {
-        this.props.stopCar();
+        request.post('http://mousemobil.ddns.net/stopcar', {});
     }
 
-    setCarPosition() {
-        this.props.setCarPosition();
+    setCarVelocity(x, y) {
+        request.post('http://mousemobil.ddns.net/setspeed', {x:x, y:y});
     }
 
     managerListener(manager) {
@@ -46,9 +48,13 @@ class JoyWrapper extends Component {
             var dy = Math.sin(radian) * magnitude;
             console.log(dx);
             console.log(dy);
+            this.setCarVelocity(dx, dy);
+
         })
+
         manager.on('end', () => {
-            console.log('I ended!')
+            this.stopCar();
+            console.log("Stopped the car.");
         })
     }
 

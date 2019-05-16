@@ -5,11 +5,11 @@ const path = require('path');
 const chalk = require('chalk');
 const morgan = require('morgan');
 const spawn = require("child_process").spawn;
-// var zerorpc = require("zerorpc");
+var zerorpc = require("zerorpc");
 
 
 var pythonProcess = spawn('python3', ['run.py', 'stop']);
-
+var client = new zerorpc.Client();
 
 
 
@@ -51,13 +51,18 @@ app.post('/runtest', function (req, res, next) {
   pythonProcess.kill('SIGKILL');
   pythonProcess = spawn('python3', ['run.py', 'test']);
   console.log("Function to start the car in controller mode should go here");
+
+  client.connect("tcp://mousemobil.ddns.net:4242");
   res.status = 200;
-  res.end(" Ran car in test mode");
+  res.end("Running car in test mode");
 });
 
 app.post('/setspeed', function (req, res, next) {
   console.log("Function to set the velocity of the cars");
-
+  client.invoke("hello", req.x, function(error, res, more) {
+    console.log(error);
+    console.log(res);
+  });
   res.status = 200;
   res.end("Updated speed of the car");
 });

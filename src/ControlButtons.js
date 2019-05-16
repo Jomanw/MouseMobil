@@ -7,11 +7,12 @@ class ControlButtons extends Component {
     constructor() {
         super();
         this.state = {
-            testMode: true,
+            testMode: false,
         }
         this.render=this.render.bind(this);
         this.runCar=this.runCar.bind(this);
         this.testMode=this.testMode.bind(this);
+        this.stopCar=this.stopCar.bind(this);
     }
 
     runCar() {
@@ -22,6 +23,9 @@ class ControlButtons extends Component {
     }
 
     stopCar() {
+        this.setState({
+            testMode: false,
+        });
         request.post('http://mousemobil.ddns.net/stopcar', {});
         request.post('http://mousemobil.ddns.net/opendoor', {});
     }
@@ -38,7 +42,6 @@ class ControlButtons extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         var controlDashboard;
         if (this.state.testMode) {
             controlDashboard = <JoyWrapper />

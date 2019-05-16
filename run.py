@@ -1,6 +1,7 @@
 # from vehicle import Vehicle
 # from hub_camera import HubCamera
 import sys
+import zerorpc
 # sys.exit()
 
 # Threshold for movement for the mouse
@@ -33,28 +34,32 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1 and sys.argv[1] == 'test':
         # car.open_door()
-        # Test Loop goes here
-        while True:
-            print("Test loop.")
-        sys.exit()
+
+        class HelloRPC(object):
+            def hello(self, x):
+
+                return "Hello, %s" %(str(x),)
+
+        s = zerorpc.Server(HelloRPC())
+        s.bind("tcp://mousemobil.ddns.net:4242")
+        s.run()
+
+
 
     if len(sys.argv) > 1 and sys.argv[1] == 'autonomous':
         # car.open_door()
         while True:
-            print("Autonomous loop.")
-        sys.exit()
+            x, y = hub.get_mouse_location()
 
-    sys.exit()
-    while True:
-        x, y = hub.get_mouse_location()
-        if not hub.mouse_present():
-            continue
+            # Wait until mouse is present
+            if not hub.mouse_present():
+                continue
 
-        # Ok, here we know a mouse is present:
-        if car.door_open():
-            car.close_door()
+            # Ok, here we know a mouse is present:
+            if car.door_open():
+                car.close_door()
 
-        if abs(x) < movement_threshold and abs() < movement_threshold:
-            car.stop_car()
-        else:
-            car.set_speed(x, y)
+            if abs(x) < movement_threshold and abs() < movement_threshold:
+                car.stop_car()
+            else:
+                car.set_speed(x, y)
