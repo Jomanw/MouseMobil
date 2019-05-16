@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JoyStick from "react-joystick";
+const request = require("request");
 
 const joyStickSize = 300;
 
