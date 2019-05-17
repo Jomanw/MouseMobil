@@ -23,12 +23,12 @@ if __name__ == "__main__":
 
     if config['enable_hardware']:
         from vehicle import Vehicle
-        from hub_camera import HubCamera
+        # from hub_camera import HubCamera
         # Car that will be controlled
         car = Vehicle(motion_servos=motion_servos, trapdoor_servo=trapdoor_servo)
 
         # Camera module that will be used to determine mouse location
-        hub = HubCamera()
+        # hub = HubCamera()
 
     # If a stop signal is sent, this script will stop the car and exit.
     if len(sys.argv) > 1 and sys.argv[1] == 'stop':
@@ -53,6 +53,7 @@ if __name__ == "__main__":
             def hello(self, velocity):
                 x = velocity[0]
                 y = velocity[1]
+                car.set_speed_expo(x, y)
                 print("X: %.3f, Y: %.3f" %(x, y))
                 return "X: %.3f, Y: %.3f" %(x, y)
 

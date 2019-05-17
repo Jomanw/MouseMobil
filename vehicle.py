@@ -3,7 +3,8 @@ Class for controlling the motors inside of our small 3-wheeled vehicle.
 """
 from adafruit_servokit import ServoKit
 import math
-import numpy as np
+# import numpy as np
+np = None
 
 class Vehicle():
     def __init__(self, motion_servos=[0, 1, 2], trapdoor_servo = 3):
@@ -11,6 +12,16 @@ class Vehicle():
         self.motion_servos = motion_servos
         self.trapdoor_servo = trapdoor_servo
         self.kit = ServoKit(channels=16)
+
+    def set_speed_expo(self, left, right):
+        """
+        Sets the speed of the car, less complex version to be used for the demo.
+        """
+        self.kit.continuous_servo[0].throttle = left
+        self.kit.continuous_servo[1].throttle = left
+        self.kit.continuous_servo[2].throttle = right
+        self.kit.continuous_servo[3].throttle = right
+
 
     def set_speed(self, direction, magnitude):
         """
@@ -82,7 +93,8 @@ class Vehicle():
         Stops the car in place
         """
         for servo_num in self.motion_servos:
-            self.kit.continuous_servo[servo_num].throttle = 0
+            # self.kit.continuous_servo[servo_num].throttle = 0
+            self.kit.continuous_servo[servo_num].throttle = 0.09
 
     def read_trapdoor_servo_angle(self):
         """
