@@ -6,10 +6,28 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const spawn = require("child_process").spawn;
 var zerorpc = require("zerorpc");
+const config = require("./config.json");
+var sleep = require("sleep");
+app.use(express.urlencoded());
+app.use(express.json());
 
 
-var pythonProcess = spawn('python3', ['run.py', 'stop']);
+
+var pythonProcess = spawn('python3', ['test_rpc.py', 'stop']);
+
+// var rpcProcess = spawn('python3', ['test_rpc.py']);
+pythonProcess.stderr.on('data', function(data) {
+  console.log(data.toString());
+});
 var client = new zerorpc.Client();
+// setTimeout(function () {
+//   client.connect('tcp://' + '127.0.0.1' + ':1337');
+// }, 5000);
+// client.invoke("hello", "RPC", function(error, res, more) {
+//   console.log("I'm here.");
+//   console.log(error);
+//   console.log(res);
+// });
 
 
 
@@ -49,21 +67,21 @@ app.post('/runautonomous', function (req, res, next) {
 
 app.post('/runtest', function (req, res, next) {
   pythonProcess.kill('SIGKILL');
-  // pythonProcess = spawn('python3', ['run.py', 'test']);
+  pythonProcess = spawn('python3', ['run.py', 'test']);
   console.log("Function to start the car in controller mode should go here");
-  rpcProcess = spawn('python3', ['test_rpc.py']);
-  client.connect("tcp://0.0.0.0:1337");
+  // rpcProcess = spawn('python3', ['run.py', 'test']);
+  pythonProcess.stdout.on('data', function(data) {
+    console.log(data.toString());
+  });
+  // client.connect('tcp://' + config.url + ':1337');
+  client.connect('tcp://127.0.0.1:1337');
   res.status = 200;
   res.end("Running car in test mode");
 });
 
-app.post('/setspeed', function (req, res, next) {
+app.post('/setspeed', function (req, res) {
   console.log("Function to set the velocity of the cars");
-  console.log(req);
-  console.log(res);
-  client.invoke("hello", req.x, function(error, res, more) {
-    console.log("I'm here.");
-    console.log(error);
+  client.invoke("hello", [req.body.x, req.body.y], function(error, res, more) {
     console.log(res);
   });
   res.status = 200;

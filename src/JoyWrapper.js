@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JoyStick from "react-joystick";
 const request = require("request");
+const config = require("../config.json");
 
 const joyStickSize = 300;
 
@@ -34,11 +35,15 @@ class JoyWrapper extends Component {
     }
 
     stopCar() {
-        request.post('http://mousemobil.ddns.net/stopcar', {});
+        request.post('http://' + config.url + '/stopcar', {});
     }
 
     setCarVelocity(x, y) {
-        request.post('http://mousemobil.ddns.net/setspeed', {x:x, y:y});
+        request.post({
+            url: 'http://' + config.url + '/setspeed',
+            body: {x:x, y:y, firstArgumentGoesHere:x + y},
+            json: true
+        });
     }
 
     managerListener(manager) {
@@ -54,7 +59,7 @@ class JoyWrapper extends Component {
         })
 
         manager.on('end', () => {
-            this.stopCar();
+            this.setCarVelocity(0, 0);
             console.log("Stopped the car.");
         })
     }

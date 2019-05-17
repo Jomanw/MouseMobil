@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JoyWrapper from './JoyWrapper.js';
 const request = require("request");
+const config = require("../config.json");
 
 
 class ControlButtons extends Component {
@@ -19,15 +20,15 @@ class ControlButtons extends Component {
         this.setState({
             testMode: false,
         });
-        request.post('http://mousemobil.ddns.net/runautonomous', {});
+        request.post('http://' + config.url + '/runautonomous', {});
     }
 
     stopCar() {
         this.setState({
             testMode: false,
         });
-        request.post('http://mousemobil.ddns.net/stopcar', {});
-        request.post('http://mousemobil.ddns.net/opendoor', {});
+        request.post('http://' + config.url + '/stopcar', {});
+        request.post('http://' + config.url + '/opendoor', {});
     }
 
     setCarPosition() {
@@ -38,7 +39,7 @@ class ControlButtons extends Component {
         this.setState({
             testMode: true,
         });
-        request.post('http://mousemobil.ddns.net/runtest', {});
+        request.post('http://' + config.url + '/runtest', {});
     }
 
     render() {
