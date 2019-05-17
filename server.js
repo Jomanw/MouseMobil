@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const spawn = require("child_process").spawn;
 var zerorpc = require("zerorpc");
 const config = require("./config.json");
-var sleep = require("sleep");
 app.use(express.urlencoded());
 app.use(express.json());
 
