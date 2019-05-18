@@ -53,8 +53,11 @@ if __name__ == "__main__":
             def hello(self, velocity):
                 x = velocity[0]
                 y = velocity[1]
-                car.set_speed_expo(x, y)
-                print("X: %.3f, Y: %.3f" %(x, y))
+                if x == 0 and y == 0:
+                    car.stop_car()
+                else:
+                    car.set_speed_expo(x, y)
+                # print("X: %.3f, Y: %.3f" %(x, y))
                 return "X: %.3f, Y: %.3f" %(x, y)
 
         s = zerorpc.Server(HelloRPC())

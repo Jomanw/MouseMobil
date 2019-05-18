@@ -52,9 +52,12 @@ class JoyWrapper extends Component {
             var magnitude = 2 * stick.distance / joyStickSize;
             var dx = Math.cos(radian) * magnitude;
             var dy = Math.sin(radian) * magnitude;
+            var left = (dy - dx) / 2;
+            var right = (dy + dx) / 2;
             console.log(dx);
             console.log(dy);
-            this.setCarVelocity(dx, dy);
+            // this.setCarVelocity(dx, dy);
+            this.setCarVelocity(left, right);
 
         })
 
