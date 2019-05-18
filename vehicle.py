@@ -18,9 +18,9 @@ class Vehicle():
         Sets the speed of the car, less complex version to be used for the demo.
         """
         self.kit.continuous_servo[0].throttle = left
-        self.kit.continuous_servo[1].throttle = left
+        self.kit.continuous_servo[1].throttle = -left
         self.kit.continuous_servo[2].throttle = right
-        self.kit.continuous_servo[3].throttle = right
+        self.kit.continuous_servo[3].throttle = -right
 
 
     def set_speed(self, direction, magnitude):
