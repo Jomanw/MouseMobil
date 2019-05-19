@@ -1,40 +1,35 @@
 # MouseMobil™
 While human transportation systems have soared in progress over the past century, mouse transportation systems have stagnated. We're making a small vehicle (think shoebox-sized) that attracts mice inside and uses a camera to allow a mouse to control the velocity of the vehicle, in the hopes of creating a more inclusive world for our small and furry friends.
 
-## Useful Links:
-Configuring Pi for I2C and using Servo Driver: https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/configuring-your-pi-for-i2c
+## How it Works
+This device uses bait and a trapdoor to trap a mouse inside a central hub, which sits on multiple wheels controlled by servos. We use a camera on the top of this hub to determine the mouse's location relative to the center of the hub, and move the car in the direction that the mouse moves towards. So if the mouse moved to the front of the car, the car would move forward. After a certain period of time, we let the mouse out.
 
-Helpful for accessing the Video Stream
-https://www.pyimagesearch.com/2015/03/30/accessing-the-raspberry-pi-camera-with-opencv-and-python/
+While the funnest mode is when the vehicle is controlled by a mouse, you also have the option of controlling the vehicle with your phone. To do this, you go to a URL that you point the MouseMobil to, and control the motion with an on-screen joystick. You can also do other things from here, like open the door and run the car in autonomous mode.
 
-Helpful for finding the mice in the images using OpenCV: https://stackoverflow.com/questions/49577973/how-to-crop-the-biggest-object-in-image-with-python-opencv
+Under the hood, the Raspberry Pi is running a Node/Express server which controls the car. There are several python scripts which control the camera and motors, and the server activates / communicates with these control scripts as necessary. We use ZeroRPC's remote prodedure call functionality to communicate with these scripts to move the car in the manual-control mode, and in the mouse-driven mode, we simply launch one of these scripts and simply let it run.
 
-Getting the no-ip service to run in the background upon reboot: https://somoit.net/raspberry/rasbperry-no-ip-configuration-ran-boot-time
+### Main Technical Components:
+#### Hardware:
+- Raspberry Pi Model 3 B+
+- PiCamera (Wide Angle Lens)
+- 3x Continuous Rotation Servo Motors
+- Continuous Rotation Servo Motor with Feedback
+- Adafruit 16-Channel Servo Driver
+- 14.8V 5000mAh 50C LiPo Battery
 
-Creating a Node Server with the Raspberry Pi: https://blog.cloudboost.io/how-to-run-a-nodejs-web-server-on-a-raspberry-pi-for-development-3ef9ac0fc02c
+#### Software:
+- Node.js
+- Express.js
+- Adafruit Servo Control Library
+- OpenCV
+- React / Webpack
+- ZeroRPC
 
-our hostname: mousemobil.ddns.net
+#### Bill of Materials:
+Coming Soon :)
 
+#### Video:
+Coming Soon :)
 
-Node with React tutorial: https://hackernoon.com/how-to-combine-a-nodejs-back-end-with-a-reactjs-front-end-app-ea9b24715032
-
-
-
-
-TODO's:
-- Implement commands to start the car from the webserver page
-- Implement commands to stop the car from the webserver page
-- Implement commands to run the car in test mode (using commands from the webserver to control the car)
-- Let the car be run from the
-
-
-
-
-
-
-
-
-
-Issues and useful links for them:
-- Requests module not working: https://github.com/mysqljs/mysql/issues/1563
--
+## Credits
+Credit goes to Tiffany Tao, Elizabeth Vasquez, and Jordan Wick for putting in the work to bring this project to life. Thanks to the MIT ProjX Team (projx.mit.edu) for supplying all of the funding for this project.
