@@ -1,4 +1,4 @@
 {
-  "url":"mousemobil.ddns.net",
-  "enable_hardware":true
+  "url":"localhost",
+  "enable_hardware":false
 }
